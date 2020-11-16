@@ -6,6 +6,7 @@ import './Login.scss';
 import google from '../../images/google.png'
 import fb from '../../images/fb.png'
 // firebase.initializeApp(firebaseConfig)
+//dummytext
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
