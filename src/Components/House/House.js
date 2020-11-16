@@ -13,7 +13,7 @@ const House = ({item}) => {
         style={{ width: '18rem' }}>
         <Card.Img
           className="mx-auto m-2"
-          variant="top"
+          // variant="top"
           src={item.image} />
         <Card.Body>
           <Card.Title>

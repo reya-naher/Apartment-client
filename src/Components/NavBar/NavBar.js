@@ -1,12 +1,12 @@
 import React from 'react';
-import { Nav, Navbar, Button } from 'react-bootstrap';
+import { Nav, Navbar, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './NavBar.scss';
 
 
 const NavBar = () => {
   return (
-    <>
+    <Container>
       <Navbar expand="lg">
         <Navbar.Brand href="#home">
           <img
@@ -60,7 +60,7 @@ const NavBar = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </>
+    </Container>
   );
 };
 
