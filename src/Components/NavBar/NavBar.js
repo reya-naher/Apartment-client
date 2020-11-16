@@ -8,14 +8,17 @@ const NavBar = () => {
   return (
     <Container>
       <Navbar expand="lg">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand>
+        <Nav.Link
+              as={Link} to="/">
           <img
             alt=""
             src="https://i.imgur.com/Hgi4KGz.png"
             width="100"
             height="40"
             className="d-inline-block align-top"
-          />
+            />
+            </Nav.Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -32,7 +35,7 @@ const NavBar = () => {
               </Nav.Link>
             <Nav.Link
               className="mr-3"
-              href="#link">
+              href="#service">
               Service
               </Nav.Link>
             <Nav.Link
@@ -47,7 +50,7 @@ const NavBar = () => {
               </Nav.Link>
               <Nav.Link
               className="mr-3"
-              href="#link">
+              href="#contact">
               Contact
               </Nav.Link>
             <Link to="/login">

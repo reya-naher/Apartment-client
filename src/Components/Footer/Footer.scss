@@ -14,13 +14,17 @@ $a-tags-hover: 'a:active, a:hover';
   text-decoration: none;
 }
 #{$a-tags-hover} {
-  color:$bgcolor;
-  text-decoration: none;
+  color:black!important;
+  text-decoration: none!important;
 }
 .headline-footer{
   font-weight: bold;
 }
-.footer-social li{
+
+.footer-social {
+  padding-left: 0px!important;
+  li{
   display: inline;
   padding: 5px;
+}
 }

@@ -2,3 +2,16 @@
 .btn-primary{
   background-color: $bgcolor!important;
 }
+
+.house-card{
+  border:none!important;
+}
+
+.house-card:hover{
+  box-shadow:  20px 20px 40px  #cac9c9;
+}
+
+.price-text{
+  color: $bgcolor;
+  font-size: 30px;
+}

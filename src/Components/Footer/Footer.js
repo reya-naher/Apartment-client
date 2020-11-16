@@ -2,13 +2,12 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import './Footer.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone} from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGooglePlus, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   let url=""
   return (
-    <Container className="footer p-5">
+    <Container id="contact" className="footer p-5 m-5">
     <Row>
             <Col md={4}>
           <p> H#34-0 (4th Floor), Road #24 <br />
@@ -51,7 +50,7 @@ const Footer = () => {
                 <li><a href={url}><FontAwesomeIcon style={{fontSize:"25px"}} icon={faInstagram} /></a></li>
                 <li><a href={url}><FontAwesomeIcon style={{ fontSize: "25px" }} icon={faGooglePlus} /></a></li>
                 <li><a href={url}><FontAwesomeIcon style={{fontSize:"25px"}} icon={faLinkedinIn} /></a></li>
-          </ul>
+                  </ul>
                     </div>
             </Col>
             </Row>
