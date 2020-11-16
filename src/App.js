@@ -9,6 +9,10 @@ import {
 import Header from './Components/Header/Header';
 import Home from './Pages/Home/Home';
 import Login from './Components/Login/Login';
+import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
+import AddHouse from './Components/Dashboard/AddHouse/AddHouse';
+import MyRent from './Components/Dashboard/MyRent/MyRent';
+import BookingList from './Components/Dashboard/BookingList/BookingList';
 
 function App() {
   return (
@@ -19,6 +23,18 @@ function App() {
           </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/dashboard">
+          <Dashboard></Dashboard>
+          </Route>
+          <Route path="/bookingList">
+          <BookingList></BookingList>
+          </Route>
+          <Route path="/addhouse">
+           <AddHouse></AddHouse>
+          </Route>
+          <Route path="/myrent">
+           <MyRent></MyRent>
           </Route>
           </Switch>
       </Router>
