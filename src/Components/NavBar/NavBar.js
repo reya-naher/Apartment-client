@@ -53,6 +53,11 @@ const NavBar = () => {
               href="#contact">
               Contact
               </Nav.Link>
+              <Nav.Link
+              className="mr-3"
+              href="/dashboard">
+              Dashboard
+              </Nav.Link>
             <Link to="/login">
               <Button
                 className="pl-5 pr-5 login-btn"

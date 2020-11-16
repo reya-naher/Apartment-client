@@ -3,12 +3,18 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import './Login.scss';
+
+import google from '../../images/google.png'
+import fb from '../../images/fb.png'
+// firebase.initializeApp(firebaseConfig)
+
 import google from '../../images/google.png';
 import fb from '../../images/fb.png';
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import NavBar from '../NavBar/NavBar';
 //dummytext
+
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -70,6 +76,8 @@ function Login() {
   }
 
 
+ 
+
   const resetPassword = email => {
     var auth = firebase.auth();
   
@@ -94,6 +102,7 @@ function Login() {
       setUser(signedOutUser);
     })
   }
+
   const handleBlur = (e) => {
     
     let isFormValid = true;
@@ -232,12 +241,12 @@ function Login() {
 
       {/* Facebook sign in start */}
 
-        <div className="row" onClick={handleFbLogin} style={{cursor:'pointer'}}>
+        <div className="row"  style={{cursor:'pointer'}}>
           <div className="col-md-4 shadow-lg p-2 mt-1">
             <img src={fb}  style={{width:'50px'}} alt=""/>
           </div>
           <div className="col-md-8 shadow-lg rounded p-2 mt-1">
-              <p >Continue with Facebook</p>
+              <p onClick={handleFbLogin}>Continue with Facebook</p>
           </div>
         </div>
         </div>
