@@ -9,6 +9,10 @@ const HomeDetails = () => {
   const {homeDetailsId} = useParams();
 
   const [homeDetails, setHomeDetails] = useState([]);
+  // console.log(homeDetailsId);
+
+  const [homeDetails, setHomeDetails] = useState([]);
+
 
   useEffect(() => {
     const matchData = fakeData.find((item) => +item.id === +homeDetailsId);
@@ -73,7 +77,7 @@ const HomeDetails = () => {
           <div className="apartment-form col-md-4">
             <form>
               <input type="text" placeholder="Full Name"/>
-              <input type="number" placeholder="Phone No."/>
+              <input type="text" placeholder="Phone No."/>
               <input type="email" placeholder="Email Address"/>
               <textarea name="massage" placeholder="massage"></textarea>
               <button>Request Booking</button>
