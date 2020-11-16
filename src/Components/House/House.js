@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './House.scss';
 
 const House = ({item}) => {
@@ -25,7 +26,9 @@ const House = ({item}) => {
             </p>
             <div className="d-flex justify-content-between">
               <div>{item.price}</div>
-             <Button className="details-btn">View Details</Button> 
+            <Link to={`home/${item.id}`}>
+              <Button className="details-btn">View Details</Button> 
+            </Link>
             </div>
           </Card.Text>
 
