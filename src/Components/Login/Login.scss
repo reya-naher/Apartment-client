@@ -1,0 +1,17 @@
+@import '../shared';
+.items{
+    width:450px;
+    height:400px;
+    padding: 30px;
+}
+.row{
+    margin:0 auto;
+}
+.items input{
+    width:100%;
+}
+.submit-btn{
+    background-color: $bgcolor!important;
+    color: white;
+    padding:5px;
+}
