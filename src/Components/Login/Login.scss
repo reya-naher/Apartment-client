@@ -1,17 +1,32 @@
 @import '../shared';
 .items{
-    width:450px;
-    height:400px;
+    width:420px;
+    height:380px;
     padding: 30px;
 }
 .row{
     margin:0 auto;
 }
-.items input{
-    width:100%;
-}
+// .items input{
+//     width:100%;
+// }
 .submit-btn{
     background-color: $bgcolor!important;
     color: white;
     padding:5px;
+    width:100%;
+}
+
+.forget-btn{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color:$bgcolor;
+  float:right;
+}
+.remember-check{
+  margin: 2px;
 }

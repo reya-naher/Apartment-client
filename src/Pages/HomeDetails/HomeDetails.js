@@ -7,10 +7,10 @@ import "./HomeDetails.scss";
 
 const HomeDetails = () => {
   const {homeDetailsId} = useParams();
-  console.log(homeDetailsId);
+  // console.log(homeDetailsId);
 
   const [homeDetails, setHomeDetails] = useState([]);
-  console.log(homeDetails);
+  // console.log(homeDetails);
 
   useEffect(() => {
     const matchData = fakeData.find((item) => item.id == homeDetailsId);
@@ -75,7 +75,7 @@ const HomeDetails = () => {
           <div className="apartment-form col-md-4">
             <form>
               <input type="text" placeholder="Full Name"/>
-              <input type="number" placeholder="Phone No."/>
+              <input type="text" placeholder="Phone No."/>
               <input type="email" placeholder="Email Address"/>
               <textarea name="massage" placeholder="massage"></textarea>
               <button>Request Booking</button>
