@@ -14,7 +14,7 @@ const Header = () => {
               <h1>Find Your House Rent</h1>
               <Form inline>
     <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-    <Button type="submit" className="search-btn">Submit</Button>
+    <Button type="submit" className="search-btn">Search</Button>
   </Form>
             </div>    
           </div>

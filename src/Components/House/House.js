@@ -1,8 +1,13 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
 import './House.scss';
 
-const House = ({item}) => {
+const House = ({ item }) => {
+  const history = useHistory()
+  const handleDetails = (id) => {
+    history.push(`/home/${id}`);
+  }
   return (
     <Col
       md={4}
@@ -13,7 +18,7 @@ const House = ({item}) => {
         style={{ width: '18rem' }}>
         <Card.Img
           className="mx-auto m-2"
-          variant="top"
+          // variant="top"
           src={item.image} />
         <Card.Body>
           <Card.Title>
@@ -25,7 +30,11 @@ const House = ({item}) => {
             </p>
             <div className="d-flex justify-content-between">
               <div>{item.price}</div>
-             <Button className="details-btn">View Details</Button> 
+            {/* <Link to={`home/${item.id}`}> */}
+                <Button
+                  onClick={()=>handleDetails(item.id)}
+                  className="details-btn">View Details</Button> 
+            {/* </Link> */}
             </div>
           </Card.Text>
 
