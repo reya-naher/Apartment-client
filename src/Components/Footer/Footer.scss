@@ -1,0 +1,26 @@
+@import '../shared';
+.footer{
+  background-color: $bgcolor;
+  color:$fontColor;
+}
+.footer-list{
+  list-style-type:none;
+}
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+ 
+#{$a-tags} {
+  color:white;
+  text-decoration: none;
+}
+#{$a-tags-hover} {
+  color:$bgcolor;
+  text-decoration: none;
+}
+.headline-footer{
+  font-weight: bold;
+}
+.footer-social li{
+  display: inline;
+  padding: 5px;
+}

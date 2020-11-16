@@ -7,6 +7,7 @@ import {
 
 import Home from './Pages/Home/Home';
 import HomeDetails from './Pages/HomeDetails/HomeDetails';
+import Login from './Components/Login/Login';
 
 function App() {
   return (
@@ -19,7 +20,11 @@ function App() {
         <Route path={`/home/:homeDetailsId`}>
           <HomeDetails></HomeDetails>
         </Route>
-        
+        <Home></Home>
+          </Route>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
           </Switch>
       </Router>
   
