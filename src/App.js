@@ -12,7 +12,6 @@ import Login from './Components/Login/Login';
 function App() {
   return (
     <Router>
-      {/* <HomeDetails/> */}
       <Switch>
         <Route exact path="/">
           <Home></Home>

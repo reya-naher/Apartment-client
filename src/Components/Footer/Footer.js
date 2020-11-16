@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import './Footer.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone} from '@fortawesome/free-solid-svg-icons';
+// import { faEnvelope, faPhone} from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGooglePlus, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {

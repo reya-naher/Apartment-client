@@ -7,13 +7,11 @@ import "./HomeDetails.scss";
 
 const HomeDetails = () => {
   const {homeDetailsId} = useParams();
-  console.log(homeDetailsId);
 
   const [homeDetails, setHomeDetails] = useState([]);
-  console.log(homeDetails);
 
   useEffect(() => {
-    const matchData = fakeData.find((item) => item.id == homeDetailsId);
+    const matchData = fakeData.find((item) => +item.id === +homeDetailsId);
     setHomeDetails(matchData);
   }, []);
 
@@ -38,9 +36,9 @@ const HomeDetails = () => {
             </div>
             <div className="img-group">
               {
-                apartmentImages.map(img => 
+                apartmentImages.map((img, index) => 
                   <>
-                    <img src={img} alt=""/>
+                    <img key={index+1} src={img} alt=""/>
                   </>
                   )
               }
