@@ -9,19 +9,21 @@ const NavBar = () => {
     <Container>
       <Navbar expand="lg">
         <Navbar.Brand>
-        <Nav.Link
-              as={Link} to="/">
-          <img
-            alt=""
-            src="https://i.imgur.com/Hgi4KGz.png"
-            width="100"
-            height="40"
-            className="d-inline-block align-top"
+          <Nav.Link
+            as={Link} to="/">
+            <img
+              alt=""
+              src="https://i.imgur.com/Hgi4KGz.png"
+              width="100"
+              height="40"
+              className="d-inline-block align-top"
             />
-            </Nav.Link>
+          </Nav.Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse
+          id="basic-navbar-nav">
           <Nav className="ml-auto">
             <Nav.Link
               className="mr-3"
@@ -43,17 +45,17 @@ const NavBar = () => {
               href="#link">
               Concerns
               </Nav.Link>
-              <Nav.Link
+            <Nav.Link
               className="mr-3"
               href="#link">
               Event
               </Nav.Link>
-              <Nav.Link
+            <Nav.Link
               className="mr-3"
               href="#contact">
               Contact
               </Nav.Link>
-              <Nav.Link
+            <Nav.Link
               className="mr-3"
               href="/dashboard">
               Dashboard
@@ -61,7 +63,7 @@ const NavBar = () => {
             <Link to="/login">
               <Button
                 className="pl-5 pr-5 login-btn"
-                >
+              >
                 Login
                 </Button>
             </Link>

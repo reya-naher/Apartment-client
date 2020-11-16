@@ -2,9 +2,9 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import './Service.scss';
 
-const Service = ({item}) => {
+const Service = ({ item }) => {
   return (
-<Col
+    <Col
       md={4}
       sm={6}
       xs={12}>
@@ -16,7 +16,7 @@ const Service = ({item}) => {
           variant="top"
           src={item.image}
           height="50%"
-        width="50%"/>
+          width="50%" />
         <Card.Body>
           <Card.Title>
             {item.name}
@@ -24,7 +24,6 @@ const Service = ({item}) => {
           <Card.Text>
             {item.description}
           </Card.Text>
-
         </Card.Body>
       </Card>
     </Col>

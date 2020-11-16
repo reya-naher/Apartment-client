@@ -20,6 +20,7 @@ const HouseRent = () => {
       data.map((item, index) => <House key={index} item={item}></House>)
     }
       </Row>
+      
       </Container>
   );
 };

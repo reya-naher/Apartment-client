@@ -3,35 +3,31 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import './Login.scss';
-
-import google from '../../images/google.png'
-import fb from '../../images/fb.png'
-// firebase.initializeApp(firebaseConfig)
-
 import google from '../../images/google.png';
 import fb from '../../images/fb.png';
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import NavBar from '../NavBar/NavBar';
-//dummytext
+
+
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 function Login() {
-  const { setLoggedInUser} = useContext(UserContext)
+  const { setLoggedInUser } = useContext(UserContext)
   const history = useHistory();
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
 
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
-    isSignedIn : false,
-    name:'',
-    email:'',
-    password:'',
-    photo:'',
-    error:'',
+    isSignedIn: false,
+    name: '',
+    email: '',
+    password: '',
+    photo: '',
+    error: '',
     success: false
   })
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -39,221 +35,207 @@ function Login() {
 
   const handleSignIn = () => {
     firebase.auth().signInWithPopup(provider)
-    .then(res => {
-      const {displayName, email, photoURL} = res.user;
-      const signedInUser = {
-        isSignedIn:true,
-        name:displayName,
-        email:email,
-        photo:photoURL
-      }
-      // setUser(signedInUser);
-      setLoggedInUser(signedInUser);
-      history.replace(from);
-    })
-    .catch(err => {
-      console.log(err);
-      console.log(err.message);
-    })
+      .then(res => {
+        const { displayName, email, photoURL } = res.user;
+        const signedInUser = {
+          isSignedIn: true,
+          name: displayName,
+          email: email,
+          photo: photoURL
+        }
+        // setUser(signedInUser);
+        setLoggedInUser(signedInUser);
+        history.replace(from);
+      })
+      .catch(err => {
+        console.log(err);
+        console.log(err.message);
+      })
   }
 
   const handleFbLogin = () => {
-    firebase.auth().signInWithPopup(fbProvider).then(function(result) {
+    firebase.auth().signInWithPopup(fbProvider).then(function (result) {
       var token = result.credential.accessToken;
       var user = result.user;
-      setLoggedInUser(user);
-      history.replace(from);
-    }).catch(function(error) {
-      // Handle Errors here.
+      // setLoggedInUser(user);
+      // history.replace(from);
+    }).catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
-      // The email of the user's account used.
       var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
-      // ...
     });
   }
 
-
- 
-
   const resetPassword = email => {
     var auth = firebase.auth();
-  
-  auth.sendPasswordResetEmail(email).then(function() {
-    // Email sent.
-  }).catch(function(error) {
-    console.log(error)
-  });
+    auth.sendPasswordResetEmail(email).then(function () {
+    }).catch(function (error) {
+      console.log(error)
+    });
   }
 
 
 
   const handleSignOut = () => {
     firebase.auth().signOut()
-    .then(res => {
-      const signedOutUser={
-        isSignedIn:false,
-        name:'',
-        email:'',
-        photo:''
-      }
-      setUser(signedOutUser);
-    })
+      .then(res => {
+        const signedOutUser = {
+          isSignedIn: false,
+          name: '',
+          email: '',
+          photo: ''
+        }
+        setUser(signedOutUser);
+      })
   }
 
   const handleBlur = (e) => {
-    
+
     let isFormValid = true;
-    if(e.target.name === 'email'){
+    if (e.target.name === 'email') {
       isFormValid = /\S+@\S+\.\S+/.test(e.target.value);
-       
+
     }
-    if(e.target.name === 'password'){
+    if (e.target.name === 'password') {
       const isPasswordValid = e.target.value.length > 6;
       const passwordNumber = /\d{1}/.test(e.target.value);
-      isFormValid =  isPasswordValid && passwordNumber;
+      isFormValid = isPasswordValid && passwordNumber;
     }
-    if(isFormValid){
-      const newUserInfo = {...user};
+    if (isFormValid) {
+      const newUserInfo = { ...user };
       newUserInfo[e.target.name] = e.target.value;
       setUser(newUserInfo);
     }
   }
   const handleSubmit = (e) => {
-    // console.log('handle click');
-    if( newUser && user.email && user.password){
+    if (newUser && user.email && user.password) {
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-      .then(res => {
-        const newUserInfo = {...user};
-        newUserInfo.error = '';
-        newUserInfo.success = true;
-        // setUser(newUserInfo);
-        updateUserName(user.name);
-        setLoggedInUser(newUserInfo);
-        history.replace(from);
+        .then(res => {
+          const newUserInfo = { ...user };
+          newUserInfo.error = '';
+          newUserInfo.success = true;
+          // setUser(newUserInfo);
+          updateUserName(user.name);
+          setLoggedInUser(newUserInfo);
+          history.replace(from);
 
-      })
-      .catch(error => {
-        const newUserInfo ={...user};
-        newUserInfo.error = error.message;
-        newUserInfo.success = false;
-        setUser(newUserInfo);
-      });
+        })
+        .catch(error => {
+          const newUserInfo = { ...user };
+          newUserInfo.error = error.message;
+          newUserInfo.success = false;
+          setUser(newUserInfo);
+        });
     }
-    if(!newUser && user.email && user.password){
+    if (!newUser && user.email && user.password) {
       firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-      .then(res => {
-        const newUserInfo = {...user};
-        newUserInfo.error = '';
-        newUserInfo.success = true;
-        // setUser(newUserInfo);
-        setLoggedInUser(newUserInfo);
-        history.replace(from);
-      })
-      .catch(function(error) {
-        const newUserInfo ={...user};
-        newUserInfo.error = error.message;
-        newUserInfo.success = false;
-        setUser(newUserInfo);
-        
-      });
+        .then(res => {
+          const newUserInfo = { ...user };
+          newUserInfo.error = '';
+          newUserInfo.success = true;
+          // setUser(newUserInfo);
+          setLoggedInUser(newUserInfo);
+          history.replace(from);
+        })
+        .catch(function (error) {
+          const newUserInfo = { ...user };
+          newUserInfo.error = error.message;
+          newUserInfo.success = false;
+          setUser(newUserInfo);
+
+        });
     }
     e.preventDefault();
   }
-  const updateUserName = name => { 
+  const updateUserName = name => {
     const user = firebase.auth().currentUser;
 
     user.updateProfile({
       displayName: name
-    }).then(function() {
-      // Update successful.
-    }).catch(function(error) {
-      // An error happened.
+    }).then(function () {
+    }).catch(function (error) {
     });
   }
   return (
     <>
-     <NavBar></NavBar>  
-    <section className='container' style={{width:'400px'}}>
-      <div>
-       <div className="row">
-          <div className="col-md-12">
-              <div className="items shadow-lg">   
-                <h3 className='mb-2 font-weight-bold'>{newUser ? 'Create an account' : 'Login'}</h3>
+      <NavBar></NavBar>
+      <section className='container' style={{ width: '400px' }}>
+        <div>
+          <div className="row">
+            <div className="col-md-12">
+              <div className="items shadow-lg">
+                <h3 className='mb-2 font-weight-bold'>
+                  {newUser ? 'Create an account' : 'Login'}
+                </h3>
 
-              <form  onSubmit={handleSubmit}>
-              {newUser && <input name="name" className="form-control" onBlur={handleBlur} type="text" placeholder="Your Name"/>}
-                <br/>
-              <input className="form-control" type="text" onBlur={handleBlur} name="email" placeholder=" Email" required/>
-              <br/>
-              <input type="password" className="form-control" onBlur={handleBlur} name="password" placeholder=" Password" required/>
+                <form onSubmit={handleSubmit}>
+                  {newUser && <input name="name" className="form-control" onBlur={handleBlur} type="text" placeholder="Your Name" />}
                   <br />
-                  
+                  <input className="form-control" type="text" onBlur={handleBlur} name="email" placeholder=" Email" required />
+                  <br />
+                  <input type="password" className="form-control" onBlur={handleBlur} name="password" placeholder=" Password" required />
+                  <br />
                   <label
-            className="remember"
-            htmlFor="remember">
-            <input
-              className="remember-check"
-              type="checkbox"
-              id="remember"
-              name="remember"
-              value="remember" />
-                 Remember Me
-            </label>
-
-          <button
-            className="forget-btn"
-            onClick={() => resetPassword(user.email)}>
-            Forget Password
-            </button>
-          <br></br>
-
-
-              <input className="submit-btn" type="submit" value={newUser ? 'Sign up' : 'Sign in'}/>
-              </form>
+                    className="remember"
+                    htmlFor="remember">
+                    <input
+                      className="remember-check"
+                      type="checkbox"
+                      id="remember"
+                      name="remember"
+                      value="remember" />
+              Remember Me
+          </label>
+                  <button
+                    className="forget-btn"
+                    onClick={() => resetPassword(user.email)}>
+                    Forget Password
+          </button>
+                  <br></br>
+                  <input className="submit-btn" type="submit" value={newUser ? 'Sign up' : 'Sign in'} />
+                </form>
                 <div className="m-3">
-                <input type="checkbox"  onChange={() => setNewUser(!newUser)} name="newUser" id=""/> 
+                  <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" />
                   <label htmlFor="">Create new account</label>
-              </div>
-            {/* </div> */}
-                <p style={{color:'red'}}> {user.error}</p>
-                {user.success && <p style={{color:'green'}}>User {newUser? 'Created' : 'logged In'} Successfully</p>}
                 </div>
+                <p style={{ color: 'red' }}> {user.error}</p>
+                {user.success && <p style={{ color: 'green' }}>User {newUser ? 'Created' : 'logged In'} Successfully</p>}
+              </div>
             </div>
-        </div>
-      
-        <p className="mt-2 text-dark text-center">-------------------Or--------------------</p>
+          </div>
 
-    {/* Google sign in start */}
-        <div className="container ml-3 mr-3">
-        <div className="row" onClick={handleSignIn} style={{cursor:'pointer'}}>
-          <div className="col-md-4 shadow-lg p-2 mt-1">
-            <img src={google}  style={{width:'40px'}} alt=""/>
-          </div>
-          <div className="col-md-8 shadow-lg rounded p-2 mt-1">
-              <p >Continue with google</p>
-          </div>
-        </div>
-      
-      {/* Google sign in End */}
+          <p className="mt-2 text-dark text-center">-------------------Or--------------------</p>
 
-      {/* Facebook sign in start */}
+          {/* Google sign in start */}
+          <div className="container ml-3 mr-3">
+            <div className="row" onClick={handleSignIn} style={{ cursor: 'pointer' }}>
+              <div className="col-md-4 shadow-lg p-2 mt-1">
+                <img src={google} style={{ width: '40px' }} alt="" />
+              </div>
+              <div className="col-md-8 shadow-lg rounded p-2 mt-1">
+                <p >Continue with google</p>
+              </div>
+            </div>
 
-        <div className="row"  style={{cursor:'pointer'}}>
-          <div className="col-md-4 shadow-lg p-2 mt-1">
-            <img src={fb}  style={{width:'50px'}} alt=""/>
+            {/* Google sign in End */}
+
+            {/* Facebook sign in start */}
+
+            <div className="row" style={{ cursor: 'pointer' }}>
+              <div className="col-md-4 shadow-lg p-2 mt-1">
+                <img src={fb} style={{ width: '50px' }} alt="" />
+              </div>
+              <div className="col-md-8 shadow-lg rounded p-2 mt-1">
+                <p onClick={handleFbLogin}>Continue with Facebook</p>
+              </div>
+            </div>
           </div>
-          <div className="col-md-8 shadow-lg rounded p-2 mt-1">
-              <p onClick={handleFbLogin}>Continue with Facebook</p>
-          </div>
+          {/* Facebook sign in */}
+
         </div>
-        </div>
-        {/* Facebook sign in */}
-       </div>
       </section>
-      </>
+    </>
   );
 }
 

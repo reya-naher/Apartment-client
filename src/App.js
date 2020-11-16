@@ -8,7 +8,6 @@ import {
 import Home from './Pages/Home/Home';
 import HomeDetails from './Pages/HomeDetails/HomeDetails';
 import Login from './Components/Login/Login';
-
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 import AddHouse from './Components/Dashboard/AddHouse/AddHouse';
 import MyRent from './Components/Dashboard/MyRent/MyRent';
@@ -25,7 +24,6 @@ function App() {
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser}}>
     <Router>
-      {/* <HomeDetails/> */}
       <Switch>
         <Route exact path="/">
           <Home></Home>
