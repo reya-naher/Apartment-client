@@ -20,8 +20,6 @@ function App() {
         <Route path={`/home/:homeDetailsId`}>
           <HomeDetails></HomeDetails>
         </Route>
-        <Home></Home>
-          </Route>
           <Route path="/login">
             <Login></Login>
           </Route>
