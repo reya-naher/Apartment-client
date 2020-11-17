@@ -1,21 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import './Login.scss';
-import google from '../../images/google.png';
-import fb from '../../images/fb.png';
-import { useHistory, useLocation, Link } from 'react-router-dom';
+import google from '../../images/google.png'
+import fb from '../../images/fb.png'
+// firebase.initializeApp(firebaseConfig)
+import { useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
 import NavBar from '../NavBar/NavBar';
-
-
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 function Login() {
-  const { setLoggedInUser } = useContext(UserContext)
+  const { loginUser} = React.useContext(UserContext)
+  const [loggedInUser, setLoggedInUser] = loginUser;
   const history = useHistory();
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
@@ -57,13 +57,11 @@ function Login() {
     firebase.auth().signInWithPopup(fbProvider).then(function (result) {
       var token = result.credential.accessToken;
       var user = result.user;
-      // setLoggedInUser(user);
-      // history.replace(from);
-    }).catch(function (error) {
-      var errorCode = error.code;
+      setLoggedInUser(user);
+      history.replace(from);
+    }).catch(function(error) {
       var errorMessage = error.message;
-      var email = error.email;
-      var credential = error.credential;
+      console.log(errorMessage)
     });
   }
 

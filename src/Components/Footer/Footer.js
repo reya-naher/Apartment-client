@@ -30,6 +30,14 @@ const Footer = () => {
         <Col md={8}>
           <Row>
             <Col md={4}>
+          <p> H#34-0 (4th Floor), Road #24 <br />
+          Now DOHS, Mohakahali, Dhaka, Bangladesh <br/>
+          Phone: 080898978687<br />
+          Email:info@gmail.com</p>       
+            </Col>
+            <Col md={2}>
+              
+
               <ul className="footer-list">
                 <li className="headline-footer">Company</li>
                 <br />
@@ -40,8 +48,8 @@ const Footer = () => {
                 <li><a href={url}>Submit Listing</a></li>
               </ul>
             </Col>
-            <Col md={4}>
-              <ul className="footer-list">
+            <Col md={2}>
+                 <ul className="footer-list">
                 <li className="headline-footer">Quick Links</li>
                 <br />
                 <li><a href={url}>Quick Links</a></li>
@@ -96,10 +104,8 @@ const Footer = () => {
                 </ul>
               </div>
             </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+        </Row>
+</Container>
   );
 };
 

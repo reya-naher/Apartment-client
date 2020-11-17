@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Form from "../../Components/Form/Form";
 import NavBar from "../../Components/NavBar/NavBar";
 import fakeData from "../../FakeData/HouseData/HouseData";
 import "./HomeDetails.scss";
 
 const HomeDetails = () => {
-  const { homeDetailsId } = useParams();
-  // console.log(homeDetailsId);
-
+  const {homeDetailsId} = useParams();
   const [homeDetails, setHomeDetails] = useState([]);
-  // console.log(homeDetails);
 
   useEffect(() => {
-    const matchData = fakeData.find((item) => item.id == homeDetailsId);
+    const matchData = fakeData.find((item) => +item.id === +homeDetailsId);
     setHomeDetails(matchData);
   }, []);
 
@@ -38,9 +36,9 @@ const HomeDetails = () => {
             </div>
             <div className="img-group">
               {
-                apartmentImages.map(img =>
+                apartmentImages.map((img, index) => 
                   <>
-                    <img src={img} alt="" />
+                    <img key={index+1} src={img} alt=""/>
                   </>
                 )
               }
@@ -87,14 +85,9 @@ const HomeDetails = () => {
               </div>
             </div>
           </div>
-          <div className="apartment-form col-md-4">
-            <form>
-              <input type="text" placeholder="Full Name" />
-              <input type="text" placeholder="Phone No." />
-              <input type="email" placeholder="Email Address" />
-              <textarea name="massage" placeholder="massage"></textarea>
-              <button>Request Booking</button>
-            </form>
+          <div className="col-md-4">
+            {/* form component */}
+            <Form homeDetail={homeDetails}></Form>
           </div>
         </div>
       </div>

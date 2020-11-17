@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
-import {  useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './House.scss';
 import { faBath, faBed, faMapMarker } from '@fortawesome/free-solid-svg-icons';
@@ -16,11 +16,17 @@ const House = ({ item }) => {
       sm={6}
       xs={12}>
       <Card
-        className="house-card mb-3"
+        className="house-card m-3"
         style={{ width: '18rem' }}>
-        <Card.Img
-          className="mx-auto m-2"
-          src={item.image} />
+        {
+          item.image.img ? 
+          <Card.Img 
+          src={`data:image/png;base64,${item.image.img}`}
+          />
+          :
+          <Card.Img
+          src={item.image}/>
+        }
         <Card.Body>
           <Card.Title>
             {item.name}
@@ -45,19 +51,11 @@ const House = ({ item }) => {
               </span>
             </p>
             <div className="d-flex justify-content-between">
-              <div>
-                <b className="price-text">
-                  <span> $ </span>
-                  <span>
-                    {item.price}
-                  </span>
-                </b>
-              </div>
-              <Button
-                onClick={() => handleDetails(item.id)}
-                className="details-btn">
-                View Details
-                </Button>
+              <div>{item.price}</div>
+                <Button
+                  onClick={()=>handleDetails(item.id)}
+                  className="details-btn">View Details</Button> 
+
             </div>
           </div>
 

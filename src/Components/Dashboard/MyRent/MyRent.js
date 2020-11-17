@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { UserContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 
 const MyRent = () => {
+    const {loginUser} = React.useContext(UserContext)
+    const [loggedInUser] = loginUser;
+    console.log(loggedInUser)
+    const [myRent, setMyRent] = useState([])
+
+    useEffect(() => {
+        fetch(`https://fierce-depths-38221.herokuapp.com/myRent?email=${loggedInUser.email}`)
+        .then(res => res.json())
+        .then(data => setMyRent(data))
+    },[])
     return (
         <div>
         <section className="row">
@@ -13,7 +24,7 @@ const MyRent = () => {
       <div className="row">
            <div className="col-md-12 d-flex justify-content-between mt-5">
                <h3>MyRent</h3>
-               <h5>UserName</h5>
+               <h5>{loggedInUser.name || "No User"}</h5>
            </div>
        </div>
         <table className="table table-borderless shadow-lg mt-5">
@@ -25,17 +36,15 @@ const MyRent = () => {
            </tr>
        </thead>
        <tbody>
-           {/* {
-             orders.map((order, index) =>  */}
-                   
-               <tr>
-                   <td>Gorgeous House</td>
-                   <td>$566</td>
+           {
+             myRent.map(order => 
+               <tr key={order._id}>
+                   <td>{order.HouseDetails.name}</td>
+                   <td>${order.HouseDetails.price}</td>
                    <td><Button style={{backgroundColor:'#275A53'}}>View Details</Button> </td>
-                  
                </tr>
-               {/* ) */}
-           {/* } */}
+                ) 
+            } 
        </tbody>
    </table>
    </div>

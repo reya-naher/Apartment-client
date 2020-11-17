@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
+import './BookingList.scss'
 
 const BookingList = () => {
+    const [orderList, setOrderList] = useState([])
+
+    useEffect(() => {
+        fetch('https://fierce-depths-38221.herokuapp.com/bookings')
+        .then(res => res.json())
+        .then(data => setOrderList(data))
+    },[])
     return (
         <div>
              <section className="row">
@@ -26,14 +34,13 @@ const BookingList = () => {
                 </tr>
             </thead>
             <tbody>
-                {/* {
-                  orders.map((order, index) =>  */}
-                        
-                    <tr>
-                        <td>Jahed sabbir</td>
-                        <td>Jahed.sabbir.bd@gmail.com</td>
-                        <td>018888888</td>
-                        <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus, quod?</td>
+                {
+                  orderList.map(order =>
+                    <tr key={order._id}>
+                        <td>{order.name}</td>
+                        <td>{order.email}</td>
+                        <td>{order.phone}</td>
+                        <td>{order.massage}</td>
                         <td>
                             
                          <select name="" id="" style={{border:'none'}}>
@@ -41,10 +48,13 @@ const BookingList = () => {
                             <option value="" style={{color:'#FFBF45'}}>Ongoing</option>
                            <option value="" style={{color:'#24A35E'}}>Done</option>
                          </select>
+
                         </td>
                     </tr>
-                    {/* ) */}
-                {/* } */}
+                     )
+                }
+            
+                
             </tbody>
         </table>
         </div>

@@ -9,14 +9,13 @@ const Service = ({ item }) => {
       sm={6}
       xs={12}>
       <Card
-        className="service text-center"
+        className="service text-center mb-5"
         style={{ width: '18rem' }}>
         <Card.Img
           className="mx-auto m-2"
           variant="top"
           src={item.image}
-          height="50%"
-          width="50%" />
+          width="200px"/>
         <Card.Body>
           <Card.Title>
             {item.name}
