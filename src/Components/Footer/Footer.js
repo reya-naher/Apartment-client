@@ -16,9 +16,7 @@ const Footer = () => {
           Phone: 080898978687<br />
           Email:info@gmail.com</p>       
             </Col>
-            <Col md={8}>
-            <Row>
-            <Col md={4}>
+            <Col md={2}>
                     <ul className="footer-list">
                 <li className="headline-footer">Company</li>
                 <br/>
@@ -29,7 +27,7 @@ const Footer = () => {
                             <li><a href={url}>Submit Listing</a></li>
                     </ul>
             </Col>
-            <Col md={4}>
+            <Col md={2}>
                     <ul className="footer-list">
                 <li className="headline-footer">Quick Links</li>
                 <br/>
@@ -54,9 +52,7 @@ const Footer = () => {
           </ul>
                     </div>
             </Col>
-            </Row>
-    </Col>
-</Row>
+        </Row>
 </Container>
   );
 };

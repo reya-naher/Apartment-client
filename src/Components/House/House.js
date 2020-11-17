@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './House.scss';
 
 const House = ({ item }) => {
@@ -14,12 +14,17 @@ const House = ({ item }) => {
       sm={6}
       xs={12}>
       <Card
-        className="house-card"
+        className="house-card m-3"
         style={{ width: '18rem' }}>
-        <Card.Img
-          className="mx-auto m-2"
-          // variant="top"
-          src={item.image} />
+        {
+          item.image.img ? 
+          <Card.Img 
+          src={`data:image/png;base64,${item.image.img}`}
+          />
+          :
+          <Card.Img
+          src={item.image}/>
+        }
         <Card.Body>
           <Card.Title>
             {item.name}
@@ -30,11 +35,9 @@ const House = ({ item }) => {
             </p>
             <div className="d-flex justify-content-between">
               <div>{item.price}</div>
-            {/* <Link to={`home/${item.id}`}> */}
                 <Button
                   onClick={()=>handleDetails(item.id)}
                   className="details-btn">View Details</Button> 
-            {/* </Link> */}
             </div>
           </Card.Text>
 

@@ -12,8 +12,7 @@ const NavBar = () => {
           <img
             alt=""
             src="https://i.imgur.com/Hgi4KGz.png"
-            width="100"
-            height="40"
+            height="50px"
             className="d-inline-block align-top"
           />
         </Navbar.Brand>
@@ -50,9 +49,10 @@ const NavBar = () => {
               href="#link">
               Contact
               </Nav.Link>
-              <Nav.Link
+              <Nav.Link 
+              as={Link}
               className="mr-3"
-              href="/dashboard">
+              to="/dashboard">
               Dashboard
               </Nav.Link>
             <Link to="/login">

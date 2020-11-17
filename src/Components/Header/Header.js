@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Container, Form, FormControl } from 'react-bootstrap';
-import NavBar from '../NavBar/NavBar';
 import './Header.scss';
 
 
@@ -13,9 +12,9 @@ const Header = () => {
             <div className="text-div mx-auto">
               <h1>Find Your House Rent</h1>
               <Form inline>
-    <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-    <Button type="submit" className="search-btn">Search</Button>
-  </Form>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <Button type="submit" className="search-btn">Search</Button>
+              </Form>
             </div>    
           </div>
           </div>

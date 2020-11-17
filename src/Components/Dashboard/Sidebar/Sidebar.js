@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faShoppingBasket, faCommentDots, faPlus, faUserCog, faGripHorizontal, faHome } from '@fortawesome/free-solid-svg-icons'
+import {  faShoppingBasket, faPlus, faHome } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../../../images/Logo.png'
 
@@ -11,7 +11,9 @@ const Sidebar = () => {
     return (
         <div className="sidebar d-flex flex-column justify-content-between col-md-12  px-4 "  style={{ height: "100vh" }}>
             <ul className="list-unstyled p-5">  
-                <img src={logo} style={{height:'50px'}} className="mb-5" alt=""/> 
+                <Link to="/">
+                 <img src={logo} style={{height:'50px'}} className="mb-5" alt=""/> 
+                </Link>
                         
                     <li>
                         <Link to="/bookinglist"  className="text-dark">
