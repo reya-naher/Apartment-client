@@ -10,16 +10,15 @@ const Header = () => {
         <div className="cover">
           <div className="opacity-set d-flex align-items-center">
             <div className="text-div mx-auto">
-              <h1>Find Your House Rent</h1>
+              <h1><b>FIND YOUR HOUSE RENT</b></h1>
               <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                 <Button type="submit" className="search-btn">Search</Button>
               </Form>
-            </div>    
+            </div>
           </div>
-          </div>
+        </div>
       </Container>
-      
     </>
   );
 };

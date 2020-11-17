@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Service from '../Service/Service';
+import './Services.scss';
 
 const Services = () => {
   const [services, setServices] = useState([])
@@ -11,6 +12,7 @@ const Services = () => {
     .then(data => setServices(data))
   } ,[])
   return (
+
     <Container>
       <div className="text-center my-3">
       <h6>Service</h6>

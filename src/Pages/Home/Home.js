@@ -8,13 +8,13 @@ import Services from '../../Components/Services/Services';
 
 const Home = () => {
   return (
-    <>
+    <div className="home-part" style={{"backgroundColor":"#F1F6F4"}}>
       <NavBar></NavBar>
       <Header></Header>
       <HouseRent></HouseRent>
       <Services></Services>
       <Footer></Footer>
-    </>
+    </div>
   );
 };
 

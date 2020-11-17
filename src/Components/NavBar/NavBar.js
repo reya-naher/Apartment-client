@@ -16,8 +16,10 @@ const NavBar = () => {
             className="d-inline-block align-top"
           />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse
+          id="basic-navbar-nav">
           <Nav className="ml-auto">
             <Nav.Link
               className="mr-3"
@@ -31,7 +33,7 @@ const NavBar = () => {
               </Nav.Link>
             <Nav.Link
               className="mr-3"
-              href="#link">
+              href="#service">
               Service
               </Nav.Link>
             <Nav.Link
@@ -39,14 +41,14 @@ const NavBar = () => {
               href="#link">
               Concerns
               </Nav.Link>
-              <Nav.Link
+            <Nav.Link
               className="mr-3"
               href="#link">
               Event
               </Nav.Link>
-              <Nav.Link
+            <Nav.Link
               className="mr-3"
-              href="#link">
+              href="#contact">
               Contact
               </Nav.Link>
               <Nav.Link 
@@ -58,7 +60,7 @@ const NavBar = () => {
             <Link to="/login">
               <Button
                 className="pl-5 pr-5 login-btn"
-                >
+              >
                 Login
                 </Button>
             </Link>
